@@ -9,8 +9,11 @@ The dataset consists of 7049 black and white images. The images are 96x96 pixels
 
 # Data Augmentation
 We use horizontal reflections for data augmentation, as well as perturbations by a random affine function. 
-The random affine function has normally distributed coefficients centered at the identity. Each perturbation can be seen as a combination of rotation, traslation, zooming and sheering.
-A grid search was used to optimize the number of perturbation images added as well as the variance of the perturbations. 
+The random affine function has normally distributed coefficients centered at the identity. 
+Each perturbation can be seen as a combination of rotation, traslation, zooming and sheering.
+
+A grid search was used to optimize the number of perturbation images added as well as the variance of the perturbations.
+Here we see the advantage of grouping various 2D transformations in affine transformations, as the data augmentation depends on just these two hyperparameters: variance and number of images added.
 
 # Model
 We use a convolutional neural network to solve the problem. It consists of 3 convolutional layers with ReLu activation functions and 2x2 maxpooling, followed by 2 locally connected layers, an average global pooling and a dense layer. The model has 1.5 million parameters.
